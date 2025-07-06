@@ -13,7 +13,13 @@ A modern, responsive web application that enables users to search for music albu
 
 ![Desktop Dark Theme](./public/screenshots/Desktop-Dark-theme.PNG)
 
-![Desktop Search Results view](./public/screenshots/Desktop-Light-theme.PNG)
+![Desktop Search Results view](./public/screenshots/Desktop-Searcch-Results.PNG)
+
+### Mobile Phone View
+
+![Mobile Phone view](./public/screenshots/Mobile-View.png)
+
+![Mobile Phone Dark view](./public/screenshots/Mobile-Dark-Mode.png)
 
 ## ✨ Features
 
