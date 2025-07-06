@@ -14,7 +14,9 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({ album, onClick }) => {
 
   return (
     <Card
-      className={`w-100 shadow-sm h-100 ${darkMode ? "bg-dark text-light" : "bg-white text-dark"}`}
+      className={`w-100 shadow-sm h-100 ${
+        darkMode ? "bg-dark text-light" : "bg-white text-dark"
+      }`}
       style={{ cursor: "pointer" }}
       onClick={() => onClick(album)}
     >
@@ -32,10 +34,16 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({ album, onClick }) => {
         <Card.Title className="text-truncate" title={album.name}>
           {album.name}
         </Card.Title>
-        <Card.Text className="small mb-2" style={{ color: darkMode ? "#ccc" : "#6c757d" }}>
+        <Card.Text
+          className="small mb-2"
+          style={{ color: darkMode ? "#ccc" : "#6c757d" }}
+        >
           {formatDate(album.release_date)} • {album.total_tracks} tracks
         </Card.Text>
-        <Card.Text className="small mb-2" style={{ color: darkMode ? "#ccc" : "#6c757d" }}>
+        <Card.Text
+          className="small mb-2"
+          style={{ color: darkMode ? "#ccc" : "#6c757d" }}
+        >
           Click to view track list
         </Card.Text>
         <div className="mt-auto">
