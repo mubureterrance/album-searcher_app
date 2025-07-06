@@ -1,21 +1,37 @@
-// Updated ThemeProvider using the custom hook
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeContext } from "../context/theme-context";
 
-const getInitialTheme = () => {
+interface ThemeProviderProps {
+  children: React.ReactNode;
+}
+
+const getInitialTheme = (): boolean => {
   if (typeof window !== "undefined") {
-    const saved = localStorage.getItem("darkMode");
-    if (saved) return JSON.parse(saved);
+    try {
+      const saved = localStorage.getItem("darkMode");
+      if (saved !== null) {
+        const parsed = JSON.parse(saved);
+        if (typeof parsed === "boolean") {
+          return parsed;
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to parse darkMode from localStorage:", error);
+    }
 
     // Check system preference
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    try {
+      if (window.matchMedia) {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+    } catch (error) {
+      console.warn("Failed to check system color scheme:", error);
+    }
   }
   return false;
 };
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   // Initialize state from localStorage or system preference
   const [darkMode, setDarkMode] = useState(getInitialTheme);
 

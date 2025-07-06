@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // Custom hook for localStorage
 export const useLocalStorage = <T>(key: string, initialValue: T): [T, (value: T) => void] => {
