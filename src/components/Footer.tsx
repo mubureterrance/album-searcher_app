@@ -8,29 +8,41 @@ export const Footer: React.FC = () => {
   const { darkMode } = useTheme();
 
   return (
-    <footer className={`py-4 mt-auto ${darkMode ? "bg-dark text-light" : "bg-light text-dark"}`}>
+    <footer
+      className={`py-4 mt-auto border-top ${
+        darkMode
+          ? "bg-dark text-light border-secondary"
+          : "bg-light text-dark border-light"
+      }`}
+    >
       <Container className="text-center small">
-        <div>© {new Date().getFullYear()} Terrance Mubure. All rights reserved.</div>
+        <div>
+          © {new Date().getFullYear()} Terrance Mubure. All rights reserved.
+        </div>
         <div className="mt-2 d-flex justify-content-center gap-4">
           <a
             href="https://github.com/mubureterrance"
             target="_blank"
             rel="noopener noreferrer"
-            className={`d-flex align-items-center gap-1 ${darkMode ? "text-light" : "text-dark"}`}
+            className={`d-flex align-items-center gap-1 text-decoration-none ${
+              darkMode ? "text-light" : "text-dark"
+            }`}
             title="GitHub"
           >
             <FaGithub size={18} />
-            GitHub
+            <span className="d-none d-sm-inline">GitHub</span>
           </a>
           <a
             href="https://www.linkedin.com/in/terrance-mubure-90662370/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`d-flex align-items-center gap-1 ${darkMode ? "text-light" : "text-dark"}`}
+            className={`d-flex align-items-center gap-1 text-decoration-none ${
+              darkMode ? "text-light" : "text-dark"
+            }`}
             title="LinkedIn"
           >
             <FaLinkedin size={18} />
-            LinkedIn
+            <span className="d-none d-sm-inline">LinkedIn</span>
           </a>
         </div>
       </Container>
