@@ -1,20 +1,24 @@
 import React, { useState, useCallback } from "react";
 import { InputGroup, FormControl, Button, Spinner } from "react-bootstrap";
-import { useTheme } from "../context/theme-context"; // ✅ Import theme
+import { useTheme } from "../context/theme-context";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
   loading: boolean;
   onErrorClear: () => void;
+  hasSearched?: boolean;
+  onClearSearch?: () => void;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
   onSearch,
   loading,
   onErrorClear,
+  hasSearched = false,
+  onClearSearch,
 }) => {
   const [searchInput, setSearchInput] = useState<string>("");
-  const { darkMode } = useTheme(); // ✅ Access darkMode
+  const { darkMode } = useTheme();
 
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
@@ -30,7 +34,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const clearSearch = useCallback(() => {
     setSearchInput("");
     onErrorClear();
-  }, [onErrorClear]);
+    if (onClearSearch) {
+      onClearSearch();
+    }
+    // Refresh the page after clearing
+    window.location.reload();
+  }, [onErrorClear, onClearSearch]);
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +62,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           className={darkMode ? "bg-dark text-light border-secondary" : ""}
           autoComplete="off"
         />
-        {searchInput && (
+        {(searchInput || hasSearched) && (
           <Button
             aria-label="Clear search"
             variant={darkMode ? "outline-light" : "outline-secondary"}

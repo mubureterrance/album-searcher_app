@@ -2,28 +2,42 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import type { SpotifyAlbum } from "../types/spotify";
 import { AlbumCard } from "./AlbumCard";
-import { useTheme } from "../context/theme-context"; // ✅ Import theme
+import { useTheme } from "../context/theme-context";
 
 interface AlbumGridProps {
   albums: SpotifyAlbum[];
-  searchedArtist: string;
+  searchedArtist?: string; // Make optional since popular albums won't have this
   onAlbumClick: (album: SpotifyAlbum) => void;
+  title?: string; // Allow custom title
+  isPopular?: boolean; // Flag to indicate if these are popular albums
 }
 
 const AlbumGridComponent: React.FC<AlbumGridProps> = ({
   albums,
   searchedArtist,
   onAlbumClick,
+  title,
+  isPopular = false,
 }) => {
-  const { darkMode } = useTheme(); // ✅ Get darkMode
+  const { darkMode } = useTheme();
 
   if (albums.length === 0) return null;
 
+  // Determine what title to show
+  const getTitle = () => {
+    if (title) return title;
+    if (searchedArtist) return `Albums by ${searchedArtist} (${albums.length})`;
+    if (isPopular) return `Popular New Releases (${albums.length})`;
+    return null;
+  };
+
+  const displayTitle = getTitle();
+
   return (
     <>
-      {searchedArtist && (
+      {displayTitle && (
         <h2 className={`mb-3 ${darkMode ? "text-light" : "text-dark"}`}>
-          Albums by {searchedArtist} ({albums.length})
+          {displayTitle}
         </h2>
       )}
       <Row className="g-4">
