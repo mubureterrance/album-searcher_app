@@ -5,20 +5,25 @@ A modern, responsive web application that enables users to search for music albu
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-album--searcher--app.vercel.app-blue?style=for-the-badge)](https://album-searcher-app.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/mubureterrance/album-searcher_app)
 
-## 📸 Screenshots
+## Screenshots
 
 ### Desktop View
 
+Initial view
 ![Desktop Initial view](./public/screenshots/Desktop-Light-theme.PNG)
 
+Dark Theme
 ![Desktop Dark Theme](./public/screenshots/Desktop-Dark-theme.PNG)
 
+Search results
 ![Desktop Search Results view](./public/screenshots/Desktop-Searcch-Results.PNG)
 
 ### Mobile Phone View
 
+initial view
 ![Mobile Phone view](./public/screenshots/Mobile-View.png)
 
+Dark Theme
 ![Mobile Phone Dark view](./public/screenshots/Mobile-Dark-Mode.png)
 
 ## ✨ Features
