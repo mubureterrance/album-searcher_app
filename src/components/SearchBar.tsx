@@ -59,7 +59,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           value={searchInput}
           onChange={handleInputChange}
           disabled={loading}
-          className={darkMode ? "bg-dark text-light border-secondary" : ""}
           autoComplete="off"
         />
         {(searchInput || hasSearched) && (
